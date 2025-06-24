@@ -18,7 +18,7 @@ import {
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const CATEGORIES = {
-  INCOME: '입금',
+  INCOME: '수입',
   EXPENSE: '지출',
 };
 
@@ -62,6 +62,24 @@ function App() {
     setTab(key);
   };
 
+  // 내역 수정 (온보딩/인라인 폼 지원)
+  const handleEditRecord = (index, newData) => {
+    if (!newData) return;
+    const target = filteredRecords[index];
+    if (!target) return;
+    setRecords(records => records.map(r =>
+      (r === target ? { ...r, ...newData, amount: Number(newData.amount) } : r)
+    ));
+  };
+
+  // 내역 삭제
+  const handleDeleteRecord = (index) => {
+    const target = filteredRecords[index];
+    if (!target) return;
+    if (!window.confirm('정말 삭제하시겠습니까?')) return;
+    setRecords(records => records.filter(r => r !== target));
+  };
+
   return (
     <S.Layout>
       <S.Sidebar>
@@ -101,9 +119,8 @@ function App() {
               <RecordTable
                 filteredRecords={filteredRecords}
                 CATEGORIES={CATEGORIES}
-                totalIncome={totalIncome}
-                totalExpense={totalExpense}
-                totalNet={totalNet}
+                onEdit={handleEditRecord}
+                onDelete={handleDeleteRecord}
               />
             </div>
           )}
