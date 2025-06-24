@@ -49,9 +49,3 @@ export const Select = styled.select`
     background: #23263a;
     font-weight: 400;
 `;
-export const Label = styled.label`
-    font-size: 1rem;
-    color: #fff;
-    font-weight: 400;
-    margin-right: 0.2rem;
-`;

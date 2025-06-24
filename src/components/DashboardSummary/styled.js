@@ -7,7 +7,7 @@ export const SummaryBox = styled.div`
   background: #23263a;
   border-radius: 12px;
   padding: 2em 1em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   gap: 2em;
   @media (max-width: 600px) {
     flex-direction: column;
