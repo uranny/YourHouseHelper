@@ -3,7 +3,6 @@ import * as S from '../../styled';
 
 function TopBar({ selectedYear, selectedMonth, setSelectedYear, setSelectedMonth, yearRange, monthRange }) {
     return (
-    <>
         <S.TopBar>
             <S.Title>{selectedYear}년 {selectedMonth}월 가계부</S.Title>
             <div style={{display:'flex',alignItems:'flex-end',flexDirection:'column',gap:'0.5em'}}>
@@ -25,7 +24,6 @@ function TopBar({ selectedYear, selectedMonth, setSelectedYear, setSelectedMonth
                 </div>
             </div>
         </S.TopBar>
-        </>
     );
 }
 

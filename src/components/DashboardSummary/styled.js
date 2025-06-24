@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// DashboardSummary 스타일 설정
 export const SummaryBox = styled.div`
   display: flex;
   justify-content: space-around;
@@ -7,9 +8,9 @@ export const SummaryBox = styled.div`
   background: #23263a;
   border-radius: 12px;
   padding: 2em 1em;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
   gap: 2em;
-  @media (max-width: 600px) {
+  @media (max-width: 1000px) {
     flex-direction: column;
     gap: 1em;
     padding: 1.2em 0.5em;

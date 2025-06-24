@@ -1,15 +1,24 @@
 import styled from 'styled-components';
 
+// RecordInput 스타일 설정
 export const InputBox = styled.form`
     display: flex;
+    width: 100%;
     align-items: center;
     gap: 0.6em;
     border-radius: 10px;
     margin-bottom: 1.2em;
     box-shadow: none;
+
+    @media (max-width: 1200px) {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5em;
+    }
 `;
 
 export const Input = styled.input`
+    flex : 1;
     background: #23263a;
     border: 1.5px solid #5b5fc7;
     border-radius: 6px;
@@ -20,6 +29,7 @@ export const Input = styled.input`
 `;
 
 export const Select = styled.select`
+    flex : 1;
     padding: 0.4rem 0.5rem;
     border: 1.5px solid #5b5fc7;
     border-radius: 6px;

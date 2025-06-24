@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
+// App.jsx스타일 설정
 export const Wrapper = styled.div`
   min-height: 100vh;
+  min-width: 1000px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -9,6 +11,7 @@ export const Wrapper = styled.div`
   background: #181c2a;
   color: #e3e6f3;
   font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Nanum Gothic', Arial, sans-serif;
+  overflow-x: auto;
 `;
 export const TopBar = styled.div`
   margin: 0 auto 1rem auto;
@@ -186,6 +189,10 @@ export const Layout = styled.div`
   display: flex;
   height : 100vh;
   background: #181c2a;
+  @media (max-width: 1000px) {
+    width: 100vw;
+    flex-direction : column;
+  }
 `;
 export const Sidebar = styled.nav`
   width: 240px;
@@ -197,11 +204,11 @@ export const Sidebar = styled.nav`
   padding: 0 0 2em 0;
   box-shadow: 2px 0 16px 0 #181c2a44;
   position: relative;
-  z-index: 10;
-  @media (max-width: 800px) {
-    width: 64px;
-    min-width: 64px;
+  @media (max-width: 1000px) {
+    width: 100%;
+    height : 200px;
     padding: 0;
+    flex-direction: row;
   }
 `;
 export const SidebarLogo = styled.div`
@@ -212,24 +219,34 @@ export const SidebarLogo = styled.div`
   letter-spacing: 0.03em;
   background: #181c2a;
   text-align: left;
-  @media (max-width: 800px) {
-    font-size: 1em;
-    padding: 1.2em 0.5em 1em 0.5em;
+  @media (max-width: 1000px) {
+    font-size: 1.25em;
+    font-weight: 700;
+    padding: 1.2em 1.5em 1.2em 1.5em;
   }
 `;
 export const SidebarMenu = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  flex: 1;
+  @media (max-width: 1000px) {
+    flex-direction: row;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 export const SidebarItem = styled.li`
+  flex : 1;
   margin: 0.2em 0;
 `;
 export const SidebarLink = styled.button`
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  text-align: left;
   gap: 0.9em;
   background: ${({ $active }) => $active ? '#23263a' : 'none'};
   color: ${({ $active }) => $active ? '#5b5fc7' : '#e3e6f3'};
@@ -245,10 +262,13 @@ export const SidebarLink = styled.button`
     background: #23263a;
     color: #5b5fc7;
   }
-  @media (max-width: 800px) {
-    padding: 0.95em 0.5em 0.95em 0.5em;
-    font-size: 0.98em;
+  @media (max-width: 1000px) {
+    padding: 1.2em 1.5em 1.2em 1.5em;
+    font-size: 1em;
+    border-left: none;
+    background: none;
     justify-content: center;
+    text-align: center;
   }
 `;
 export const Main = styled.main`
@@ -259,21 +279,22 @@ export const Main = styled.main`
   align-items: stretch;
   background: #181c2a;
   padding: 0 0 2em 0;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     padding: 0 0 1em 0;
   }
 `;
 export const MainContent = styled.div`
-  min-width: 700px;
-  max-width: 700px;
+  min-width: 60vw;
+  max-width: 60vw;
   margin: 0 auto;
   padding: 2.5em 2em 0 2em;
   height: 100%;
   overflow-y: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE, Edge */
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
   &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
   }
   @media (max-width: 600px) {
     padding: 1.2em 0.2em 0 0.2em;

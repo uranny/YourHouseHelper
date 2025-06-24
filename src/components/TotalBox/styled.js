@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// TotalBox 스타일 설정
 export const Total = styled.div`
     display: flex;
     justify-content: center;
@@ -17,11 +18,15 @@ export const Total = styled.div`
     letter-spacing: 0.01em;
     color: #fff;
     span { min-width: 80px; color: #fff; }
+    @media (max-width: 1000px) {
+        flex-direction: column;
+        gap: 0.5em;
+    }
 `;
 
 export const TotalValue = styled.span`
     display: inline-block;
-    max-width: 120px;
+    max-width: 180px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

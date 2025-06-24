@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// TopBar 스타일 설정
 export const TopBar = styled.div`
     margin: 0 auto 1rem auto;
     display: flex;
