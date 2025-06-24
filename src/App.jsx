@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './styled';
 import TopBar from './components/TopBar/TopBar';
 import TotalBox from './components/TotalBox/TotalBox';
@@ -26,86 +26,22 @@ const CATEGORIES = {
 };
 
 function App() {
-  const now = new Date();
-  const [selectedYear, setSelectedYear] = useState(now.getFullYear());
-  const [selectedMonth, setSelectedMonth] = useState(now.getMonth() + 1);
-  const yearRange = Array.from({ length: 26 }, (_, i) => now.getFullYear() - 25 + i);
-  const monthRange = Array.from({ length: 12 }, (_, i) => i + 1);
-
-  // 대시보드용 연도 선택 상태 추가
-  const [dashboardYear, setDashboardYear] = useState(now.getFullYear());
-
-  // 로컬스토리지에서 불러오기 (최초 1회)
-  const getLocalRecords = () => {
-    try {
-      const data = localStorage.getItem('accountbook-records');
-      return data ? JSON.parse(data) : [];
-    } catch {
-      return [];
-    }
-  };
-  const [records, setRecords] = useState(getLocalRecords());
-  const [newRecord, setNewRecord] = useState({ category: 'EXPENSE', amount: '', description: '', date: '' });
-  const [tab, setTab] = useState('dashboard');
-  const [graphView, setGraphView] = useState('year');
-
   const {
-    filteredRecords,
-    totalIncome,
-    totalExpense,
-    totalNet,
-    incomeGraphData,
-    expenseGraphData,
-    totalGraphData,
-    yearLabels,
-    yearlySummary,
-    getYearSummary,
-  } = useAccountBook(records, selectedYear, selectedMonth, graphView);
+    // 모든 상태와 핸들러, 데이터
+    NAV_ITEMS, tab, setTab,
+    selectedYear, setSelectedYear, selectedMonth, setSelectedMonth,
+    yearRange, monthRange,
+    dashboardYear, setDashboardYear, yearLabels,
+    newRecord, setNewRecord, handleAddRecord,
+    filteredRecords, handleEditRecord, handleDeleteRecord,
+    totalIncome, totalExpense, totalNet,
+    incomeGraphData, expenseGraphData, totalGraphData,
+    yearlySummary, getYearSummary,
+    graphView, setGraphView,
+    records,
+  } = useAccountBook();
 
-  const NAV_ITEMS = [
-    { key: 'dashboard', label: '수입/지출 한눈에 보기' },
-    { key: 'table', label: '수입/지출 내역' },
-    { key: 'total-graph', label: '수입/지출 그래프' },
-  ];
-
-  // 대시보드용 연도별 요약
-  const dashboardYearSummary = getYearSummary(dashboardYear);
-
-  // 내역 추가
-  const handleAddRecord = () => {
-    if (!newRecord.amount || !newRecord.date) return;
-    setRecords(prev => [...prev, { ...newRecord, amount: Number(newRecord.amount) }]);
-    setNewRecord({ category: 'EXPENSE', amount: '', description: '', date: '' });
-  };
-
-  // 네비게이션 클릭 시 탭 변경
-  const handleNav = (key) => {
-    setTab(key);
-  };
-
-  // 내역 수정 (온보딩/인라인 폼 지원)
-  const handleEditRecord = (index, newData) => {
-    if (!newData) return;
-    const target = filteredRecords[index];
-    if (!target) return;
-    setRecords(records => records.map(r =>
-      (r === target ? { ...r, ...newData, amount: Number(newData.amount) } : r)
-    ));
-  };
-
-  // 내역 삭제
-  const handleDeleteRecord = (index) => {
-    const target = filteredRecords[index];
-    if (!target) return;
-    if (!window.confirm('정말 삭제하시겠습니까?')) return;
-    setRecords(records => records.filter(r => r !== target));
-  };
-
-  // records가 바뀔 때마다 로컬스토리지에 저장
-  React.useEffect(() => {
-    localStorage.setItem('accountbook-records', JSON.stringify(records));
-  }, [records]);
-
+  // UI만 남김 (기존과 동일)
   return (
     <S.Layout>
       <S.Sidebar>
@@ -113,7 +49,7 @@ function App() {
         <S.SidebarMenu>
           {NAV_ITEMS.map(item => (
             <S.SidebarItem key={item.key}>
-              <S.SidebarLink $active={tab===item.key} onClick={()=> handleNav(item.key)}>
+              <S.SidebarLink $active={tab===item.key} onClick={()=> setTab(item.key)}>
                 {item.label}
               </S.SidebarLink>
             </S.SidebarItem>
@@ -157,7 +93,7 @@ function App() {
                 </S.Select>
               </S.DashboardYearSelectBar>
               {/* 선택 연도 요약 */}
-              <DashboardSummary year={dashboardYear} income={dashboardYearSummary.income} expense={dashboardYearSummary.expense} net={dashboardYearSummary.net} />
+              <DashboardSummary year={dashboardYear} income={getYearSummary(dashboardYear).income} expense={getYearSummary(dashboardYear).expense} net={getYearSummary(dashboardYear).net} />
               {/* 연도별 총합 표 */}
               <div style={{ background: '#23263a', borderRadius: 12, padding: '1.5em', marginBottom: '2em' }}>
                 <div style={{ color: '#fff', fontWeight: 600, marginBottom: '1em' }}>연도별 총합</div>

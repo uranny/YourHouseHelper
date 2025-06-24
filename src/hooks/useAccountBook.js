@@ -1,8 +1,73 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 
-export function useAccountBook(records, selectedYear, selectedMonth, graphView) {
+export function useAccountBook() {
+    const now = new Date();
+    // 연/월 선택
+    const [selectedYear, setSelectedYear] = useState(now.getFullYear());
+    const [selectedMonth, setSelectedMonth] = useState(now.getMonth() + 1);
+    const yearRange = Array.from({ length: 26 }, (_, i) => now.getFullYear() - 25 + i);
+    const monthRange = Array.from({ length: 12 }, (_, i) => i + 1);
+    // 대시보드 연도
+    const [dashboardYear, setDashboardYear] = useState(now.getFullYear());
+    // 탭
+    const [tab, setTab] = useState('dashboard');
+    // 그래프 뷰
+    const [graphView, setGraphView] = useState('year');
+    // 로컬스토리지에서 불러오기 (최초 1회)
+    const getLocalRecords = () => {
+        try {
+            const data = localStorage.getItem('accountbook-records');
+            return data ? JSON.parse(data) : [];
+        } catch {
+            return [];
+        }
+    };
+    const [records, setRecords] = useState(getLocalRecords());
+    // 새 내역
+    const [newRecord, setNewRecord] = useState({ category: 'EXPENSE', amount: '', description: '', date: '' });
+    // 내역 추가
+    const handleAddRecord = () => {
+        if (!newRecord.amount || !newRecord.date) return;
+        setRecords(prev => [...prev, { ...newRecord, amount: Number(newRecord.amount) }]);
+        setNewRecord({ category: 'EXPENSE', amount: '', description: '', date: '' });
+    };
+    // 내역 수정
+    const handleEditRecord = (index, newData) => {
+        if (!newData) return;
+        const filteredRecords = getFilteredRecords();
+        const target = filteredRecords[index];
+        if (!target) return;
+        setRecords(records => records.map(r =>
+            (r === target ? { ...r, ...newData, amount: Number(newData.amount) } : r)
+        ));
+    };
+    // 내역 삭제
+    const handleDeleteRecord = (index) => {
+        const filteredRecords = getFilteredRecords();
+        const target = filteredRecords[index];
+        if (!target) return;
+        if (!window.confirm('정말 삭제하시겠습니까?')) return;
+        setRecords(records => records.filter(r => r !== target));
+    };
+    // records가 바뀔 때마다 로컬스토리지에 저장
+    useEffect(() => {
+        localStorage.setItem('accountbook-records', JSON.stringify(records));
+    }, [records]);
+    // NAV_ITEMS
+    const NAV_ITEMS = [
+        { key: 'dashboard', label: '수입/지출 한눈에 보기' },
+        { key: 'table', label: '수입/지출 내역' },
+        { key: 'total-graph', label: '수입/지출 그래프' },
+    ];
+    // 필터링된 내역 (월별)
+    const getFilteredRecords = () => records.filter(r => {
+        const d = new Date(r.date);
+        return d.getFullYear() === selectedYear && d.getMonth() + 1 === selectedMonth;
+    });
+    const filteredRecords = useMemo(getFilteredRecords, [records, selectedYear, selectedMonth]);
+
     // 월별 내역 필터링
-    const filteredRecords = useMemo(() => {
+    const filteredRecordsMemo = useMemo(() => {
         return records.filter(r => {
         const d = new Date(r.date);
         return d.getFullYear() === selectedYear && d.getMonth() + 1 === selectedMonth;
@@ -12,12 +77,12 @@ export function useAccountBook(records, selectedYear, selectedMonth, graphView) 
     // 월별 합계
     const { totalIncome, totalExpense, totalNet } = useMemo(() => {
         let totalIncome = 0, totalExpense = 0;
-        filteredRecords.forEach(r => {
+        filteredRecordsMemo.forEach(r => {
         if (r.category === 'INCOME') totalIncome += Number(r.amount) || 0;
         else totalExpense += Number(r.amount) || 0;
         });
         return { totalIncome, totalExpense, totalNet: totalIncome - totalExpense };
-    }, [filteredRecords]);
+    }, [filteredRecordsMemo]);
 
     // 월별 집계 (그래프용)
     const monthlyStats = useMemo(() => {
@@ -230,7 +295,15 @@ export function useAccountBook(records, selectedYear, selectedMonth, graphView) 
     }, [graphView, yearLabels, yearStats, filteredMonthLabels, monthlyStats, filteredDayLabels, dayStats]);
 
     return {
-        filteredRecords,
+        NAV_ITEMS, tab, setTab,
+        selectedYear, setSelectedYear, selectedMonth, setSelectedMonth,
+        yearRange, monthRange,
+        dashboardYear, setDashboardYear,
+        newRecord, setNewRecord, handleAddRecord,
+        filteredRecords, handleEditRecord, handleDeleteRecord,
+        records,
+        graphView, setGraphView,
+        filteredRecordsMemo,
         totalIncome,
         totalExpense,
         totalNet,
