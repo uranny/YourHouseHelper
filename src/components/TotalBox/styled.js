@@ -18,3 +18,18 @@ export const Total = styled.div`
     color: #fff;
     span { min-width: 80px; color: #fff; }
 `;
+
+export const TotalValue = styled.span`
+    display: inline-block;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+    @media (max-width: 600px) {
+        max-width: 120px;
+    }
+    @media (max-width: 400px) {
+        max-width: 90px;
+    }
+`;

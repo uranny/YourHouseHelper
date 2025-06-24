@@ -150,16 +150,19 @@ export const Input = styled.input`
   color: #e3e6f3;
 `;
 export const Button = styled.button`
-  padding: 0.4em 1.1em;
-  border: 1.5px solid #5b5fc7;
-  border-radius: 7px;
   background: #5b5fc7;
   color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5em 1.2em;
   font-size: 1em;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
-  &:hover { background: #3a3e7a; color: #fff; }
+  transition: background 0.2s;
+  &:hover {
+    background: #3ad29f;
+    color: #23263a;
+  }
 `;
 export const TabBar = styled.div`
   display: flex;
@@ -262,7 +265,7 @@ export const Main = styled.main`
 `;
 export const MainContent = styled.div`
   min-width: 700px;
-  max-width: 900px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 2.5em 2em 0 2em;
   height: 100%;
@@ -274,5 +277,15 @@ export const MainContent = styled.div`
   }
   @media (max-width: 600px) {
     padding: 1.2em 0.2em 0 0.2em;
+  }
+`;
+export const DashboardYearSelectBar = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+  gap: 1em;
+  @media (max-width: 600px) {
+    gap: 0.5em;
+    margin-bottom: 0.7em;
   }
 `;

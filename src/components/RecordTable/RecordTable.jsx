@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as S from './styled';
-import EditModal from './EditModal';
+import EditModal from '../EditModal/EditModal';
 
 function RecordTable({ filteredRecords, CATEGORIES, onEdit, onDelete }) {
     const [editIndex, setEditIndex] = useState(null);
@@ -35,11 +35,11 @@ function RecordTable({ filteredRecords, CATEGORIES, onEdit, onDelete }) {
     return (
         <>
         <EditModal
-          open={editIndex !== null}
-          value={editData}
-          onChange={handleEditChange}
-          onSave={handleEditSave}
-          onCancel={handleEditCancel}
+            open={editIndex !== null}
+            value={editData}
+            onChange={handleEditChange}
+            onSave={handleEditSave}
+            onCancel={handleEditCancel}
         />
         <S.TableWrapper>
             <S.Table>
