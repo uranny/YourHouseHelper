@@ -179,16 +179,6 @@ export const TabBtn = styled.button`
   transition: background 0.15s, color 0.15s;
   outline: none;
 `;
-export const ChartBox = styled.div`
-  height: 340px;
-  background: #23263a;
-  border-radius: 12px;
-  border: 1.5px solid #5b5fc7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.7em 0.7em 0.7em 0.7em;
-`;
 export const Layout = styled.div`
   display: flex;
   height : 100vh;

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from '../styled';
+import * as S from '../../styled';
 
 function TopBar({ selectedYear, selectedMonth, setSelectedYear, setSelectedMonth, yearRange, monthRange }) {
     return (

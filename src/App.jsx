@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import * as S from './styled';
-import TopBar from './components/TopBar';
-import TotalBox from './components/TotalBox';
-import RecordInput from './components/RecordInput';
-import RecordTable from './components/RecordTable';
-import GraphBox from './components/GraphBox';
+import TopBar from './components/TopBar/TopBar';
+import TotalBox from './components/TotalBox/TotalBox';
+import RecordInput from './components/RecordInput/RecordInput';
+import RecordTable from './components/RecordTable/RecordTable';
+import GraphBox from './components/GraphBox/GraphBox';
 import { useAccountBook } from './hooks/useAccountBook';
 import {
   Chart as ChartJS,
@@ -108,7 +108,7 @@ function App() {
             </div>
           )}
           {tab === 'total-graph' && (
-            <div style={{width:'100%',maxWidth:'700px',margin:'0 auto'}}>
+            <div style={{width:'100%',maxWidth:'700px',margin:'0 auto',}}>
               <GraphBox
                 title="수입/지출 그래프"
                 color="#fff"

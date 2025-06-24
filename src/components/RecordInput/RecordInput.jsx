@@ -1,9 +1,9 @@
 import React from 'react';
-import * as S from '../styled';
+import * as S from './styled';
 
 function RecordInput({ newRecord, setNewRecord, handleAddRecord }) {
     return (
-        <S.InputRow>
+        <S.InputBox as="form">
             <S.Select name="type" value={newRecord.category} onChange={e => setNewRecord({ ...newRecord, category: e.target.value })}>
                 <option value="INCOME">수입</option>
                 <option value="EXPENSE">지출</option>
@@ -29,7 +29,7 @@ function RecordInput({ newRecord, setNewRecord, handleAddRecord }) {
                 onChange={e => setNewRecord({ ...newRecord, date: e.target.value })}
             />
             <S.Button onClick={handleAddRecord}>추가</S.Button>
-        </S.InputRow>
+        </S.InputBox>
     );
 }
 
