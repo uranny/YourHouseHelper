@@ -9,7 +9,7 @@ function GraphBox({
         <S.GraphBoxWrapper>
             <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'100%',marginBottom:'0.7em'}}>
                 <S.ChartTitle style={{color}}>{title}</S.ChartTitle>
-                <div>
+                <div style={{justifyContent:'flex-end',display:'flex',alignItems:'center'}}>
                     <S.Button style={{marginRight:'0.5em',background:graphView==='day'?undefined:'#23263a',color:graphView==='day'?'#fff':'#bfc6d1'}} onClick={()=>setGraphView('day')}>일별</S.Button>
                     <S.Button style={{marginRight:'0.5em',background:graphView==='month'?undefined:'#23263a',color:graphView==='month'?'#fff':'#bfc6d1'}} onClick={()=>setGraphView('month')}>월별</S.Button>
                     <S.Button style={{background:graphView==='year'?undefined:'#23263a',color:graphView==='year'?'#fff':'#bfc6d1'}} onClick={()=>setGraphView('year')}>연도별</S.Button>

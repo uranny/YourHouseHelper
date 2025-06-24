@@ -169,8 +169,10 @@ export const Button = styled.button`
 `;
 export const TabBar = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 0.5em;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1em;
   margin: 1.2em 0 1.2em 0;
 `;
 export const TabBtn = styled.button`
@@ -290,7 +292,6 @@ export const MainContent = styled.div`
   padding: 2.5em 2em 0 2em;
   height: 100%;
   overflow-y: auto;
-  overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none; 
   &::-webkit-scrollbar {
