@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// GraphBox 스타일 설정
 export const GraphBoxWrapper = styled.div`
     background: #23263a;
     border-radius: 10px;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// YearlyGraph 스타일 설정
 export const GraphBox = styled.div`
     background: #23263a;
     border-radius: 12px;

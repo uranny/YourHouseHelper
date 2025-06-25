@@ -1,35 +1,37 @@
 import React from 'react';
-import * as S from './styled';
+import * as S from './styled'; // 스타일 컴포넌트를 불러옴
 
-function DashboardTable({ records, CATEGORIES }) {
+// DashboardSummary 컴포넌트는 연도별 수입, 지출, 순이익(합계)를 보여주는 박스 UI 컴포넌트
+function DashboardSummary({ year, income, expense, net }) {
   return (
-    <S.TableWrapper>
-      <S.Table>
-        <thead>
-          <tr>
-            <S.Th>날짜</S.Th>
-            <S.Th>구분</S.Th>
-            <S.Th>금액</S.Th>
-            <S.Th>사유</S.Th>
-          </tr>
-        </thead>
-        <tbody>
-          {records.length === 0 ? (
-            <tr><S.Td colSpan={4} style={{textAlign:'center',color:'#aaa'}}>내역이 없습니다.</S.Td></tr>
-          ) : (
-            records.map((r, i) => (
-              <S.Tr key={i}>
-                <S.Td>{r.date}</S.Td>
-                <S.Td>{CATEGORIES[r.category]}</S.Td>
-                <S.Td style={{color: r.category === 'INCOME' ? '#3ad29f' : '#5b5fc7', fontWeight:500}}>{Number(r.amount).toLocaleString()}원</S.Td>
-                <S.Td>{r.description}</S.Td>
-              </S.Tr>
-            ))
-          )}
-        </tbody>
-      </S.Table>
-    </S.TableWrapper>
+    <S.SummaryBox> {/* 전체 요약 박스를 감싸는 컨테이너 */}
+
+      {/* 총 수입 섹션 */}
+      <div>
+        <S.SummaryTitle>{year}년 총 수입</S.SummaryTitle>
+        <S.SummaryValue color="#3ad29f">
+          {income.toLocaleString()}원 {/* 수입 값에 천 단위 콤마 추가 후 출력 */}
+        </S.SummaryValue>
+      </div>
+
+      {/* 총 지출 섹션 */}
+      <div>
+        <S.SummaryTitle>{year}년 총 지출</S.SummaryTitle>
+        <S.SummaryValue color="#5b5fc7">
+          {expense.toLocaleString()}원 {/* 지출 값에 천 단위 콤마 추가 후 출력 */}
+        </S.SummaryValue>
+      </div>
+
+      {/* 합계 (순이익 또는 순손실) 섹션 */}
+      <div>
+        <S.SummaryTitle>{year}년 합계</S.SummaryTitle>
+        <S.SummaryValue color={net >= 0 ? '#3ad29f' : '#e74c3c'}>
+          {net.toLocaleString()}원 {/* 양수면 초록색, 음수면 빨간색으로 표시 */}
+        </S.SummaryValue>
+      </div>
+
+    </S.SummaryBox>
   );
 }
 
-export default DashboardTable;
+export default DashboardSummary; // 외부에서 사용할 수 있도록 export

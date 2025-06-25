@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// DashboardTable 스타일 설정
 export const TableWrapper = styled.div`
   width: 100%;
   overflow-x: auto;
