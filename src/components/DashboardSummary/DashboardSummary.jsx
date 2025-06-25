@@ -13,7 +13,7 @@ function DashboardSummary({ year, income, expense, net }) {
         <S.SummaryValue color="#5b5fc7">{expense.toLocaleString()}원</S.SummaryValue>
       </div>
       <div>
-        <S.SummaryTitle>{year}년 순이익</S.SummaryTitle>
+        <S.SummaryTitle>{year}년 합계</S.SummaryTitle>
         <S.SummaryValue color={net >= 0 ? '#3ad29f' : '#e74c3c'}>{net.toLocaleString()}원</S.SummaryValue>
       </div>
     </S.SummaryBox>
