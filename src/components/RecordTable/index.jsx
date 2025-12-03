@@ -46,17 +46,16 @@ function RecordTable({ filteredRecords, CATEGORIES, onEdit, onDelete }) {
             <S.TableWrapper>
                 <S.Table>
                     <thead>
-                        <tr>
+                        <S.Tr>
                             <S.Th>날짜</S.Th>
                             <S.Th>구분</S.Th>
                             <S.Th>금액</S.Th>
                             <S.Th>사유</S.Th>
                             <S.Th>수정</S.Th>
                             <S.Th>삭제</S.Th>
-                        </tr>
+                        </S.Tr>
                     </thead>
-
-                    <tbody>
+                    <tbody style={{position : 'relative', overflow : 'visible'}}>
                         {sortedRecords.length === 0 ? (
                             <tr>
                                 <S.Td colSpan={6} style={{ textAlign: 'center', color: '#aaa' }}>
@@ -71,7 +70,9 @@ function RecordTable({ filteredRecords, CATEGORIES, onEdit, onDelete }) {
                                     <S.Td style={{ color: r.category === 'INCOME' ? '#3ad29f' : '#5b5fc7', fontWeight: 500 }}>
                                         {Number(r.amount).toLocaleString()}원
                                     </S.Td>
-                                    <S.Td>{r.description}</S.Td>
+                                    <S.Td>
+                                        {r.description}
+                                    </S.Td>
                                     <S.Td>
                                         <button
                                             style={{ background: 'none', color: '#fff', border: 'none', cursor: 'pointer' }}

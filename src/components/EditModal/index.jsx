@@ -46,13 +46,13 @@ function EditModal({ open, value, onChange, onSave, onCancel }) {
                     />
                 </S.Row>
                 <S.ButtonRow>
-                    <S.Button onClick={onSave}>저장</S.Button>
                     <S.Button
                         style={{ background: '#444', color: '#fff' }}
                         onClick={onCancel}
                     >
                         취소
                     </S.Button>
+                    <S.Button onClick={onSave}>저장</S.Button>
                 </S.ButtonRow>
             </S.ModalBox>
         </S.Overlay>

@@ -1,4 +1,3 @@
-import React from 'react';
 import * as S from './styled';
 
 function RecordInput({ newRecord, setNewRecord, handleAddRecord }) {
@@ -24,7 +23,6 @@ function RecordInput({ newRecord, setNewRecord, handleAddRecord }) {
                 name="description"
                 type="text"
                 placeholder="사유"
-                maxLength={10}
                 value={newRecord.description}
                 onChange={e => setNewRecord({ ...newRecord, description: e.target.value })}
             />

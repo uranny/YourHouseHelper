@@ -6,7 +6,6 @@ export const InputBox = styled.form`
     align-items: center;
     gap: 0.6em;
     border-radius: 10px;
-    margin-bottom: 1.2em;
     box-shadow: none;
 
     @media (max-width: 1200px) {

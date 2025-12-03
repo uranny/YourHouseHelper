@@ -6,7 +6,7 @@ export function useTable() {
         selectedYear, setSelectedYear, selectedMonth, setSelectedMonth, records, setRecords
     } = useAccountBook();
 
-    const [newRecord, setNewRecord] = useState({ category: 'EXPENSE', amount: '', description: '', date: '' });
+    const [newRecord, setNewRecord] = useState({ category: 'INCOME', amount: '', description: '', date: '' });
 
     const handleAddRecord = () => {
         if (!newRecord.amount || !newRecord.date) return;
