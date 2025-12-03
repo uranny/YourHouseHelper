@@ -32,7 +32,7 @@ function Dashboard() {
         expense={getYearSummary(dashboardYear).expense}
         net={getYearSummary(dashboardYear).net}
       />
-      <div style={{ background: '#23263a', borderRadius: 12, padding: '1.5em', marginBottom: '2em', overflowX: 'auto'  }}>
+      <div style={{ background: '#23263a', borderRadius: 12, padding: '1.5em', overflowX: 'auto'  }}>
         <div style={{ color: '#fff', fontWeight: 600, marginBottom: '1em' }}>연도별 총합</div>
         <table style={{ width: '100%', color: '#fff', borderCollapse: 'collapse', fontSize: '1em', overflowX: 'auto' }}>
           <thead>
@@ -62,7 +62,7 @@ function Dashboard() {
         </table>
       </div>
       <YearlyGraph data={totalGraphData} />
-      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1.5em' }}>
+      <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
         <S.Button as="a" href="/table">+ 수입/지출 내역 추가하기</S.Button>
       </div>
     </S.DashboardPageWrapper>

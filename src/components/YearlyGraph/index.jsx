@@ -13,7 +13,19 @@ function YearlyGraph({ data }) {
                         plugins: { legend: { display: true } },
                         responsive: true, 
                         maintainAspectRatio: false, 
-                        scales: { y: { beginAtZero: true } } 
+                        scales: { 
+                            y: { 
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: (value) => `${value} 원`,
+                                },
+                            },
+                            x : {
+                                title: {
+                                    display: true,
+                                },
+                            }
+                        }
                     }}
                     height={260} 
                 />

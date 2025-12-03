@@ -7,14 +7,13 @@ export const DashboardPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top : 2em;
-  gap: 2em;
+  gap : 2em;
 `;
 
 export const DashboardYearSelectBar = styled.div`
   display: flex;
   align-items: center;
   gap: 1em;
-  margin-bottom: 1.5em;
 `;
 
 export const Select = styled.select`
@@ -35,4 +34,5 @@ export const Button = styled.button`
   font-size: 1em;
   font-weight: 600;
   cursor: pointer;
+  text-decoration : none;
 `;

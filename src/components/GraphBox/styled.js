@@ -19,7 +19,6 @@ export const ChartTitle = styled.div`
 
 export const ChartBox = styled.div`
     width: 100%;
-    max-width: 600px;
     min-height: 260px;
     background: transparent;
 `;

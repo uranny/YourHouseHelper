@@ -82,16 +82,16 @@ export function useDashboard() {
 
   const totalGraphData = useMemo(() => {
     return {
-      labels: monthLabels,
+      labels: monthLabels.map((v) => `${v}월`),
       datasets: [
         {
           label: '수입',
-          data: monthLabels.map(y => monthStats[y]?.income || 0),
+          data: monthLabels.map(y => monthStats[y]?.income || 0 + '원'),
           backgroundColor: '#3ad29f',
         },
         {
           label: '지출',
-          data: monthLabels.map(y => monthStats[y]?.expense || 0),
+          data: monthLabels.map(y => monthStats[y]?.expense || 0 + '원'),
           backgroundColor: '#5b5fc7',
         },
       ],
