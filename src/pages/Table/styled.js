@@ -7,4 +7,5 @@ export const TablePageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2em;
+  margin-top : 2em;
 `;

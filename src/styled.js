@@ -311,15 +311,25 @@ export const DashboardYearSelectBar = styled.div`
   }
 `;
 export const HeaderBar = styled.header`
+  margin : 0, auto;
   background:rgb(29, 32, 50);
   color: #e3e6f3;
-  display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   box-shadow: 2px 0 16px 0 #181c2a44;
   padding: 1em 1em 1em 1em;
 `;
+
+export const HeaderWrapper = styled.div`
+  width : '100%';
+  display : flex;
+  flex-direction : row;
+  max-width : 900px;
+  margin : auto;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const HeaderLogo = styled.div`
   font-size: 1.25em;
   font-weight: 700;

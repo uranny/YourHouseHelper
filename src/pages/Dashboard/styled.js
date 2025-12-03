@@ -6,6 +6,7 @@ export const DashboardPageWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-top : 2em;
   gap: 2em;
 `;
 

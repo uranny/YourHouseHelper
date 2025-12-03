@@ -5,7 +5,7 @@ import * as S from './styled';
 function YearlyGraph({ data }) {
     return (
         <S.GraphBox>
-            <S.GraphTitle>연도별 수입/지출 그래프</S.GraphTitle> 
+            <S.GraphTitle>월별 수입/지출 그래프</S.GraphTitle> 
             <S.ChartBox>
                 <Bar
                     data={data}

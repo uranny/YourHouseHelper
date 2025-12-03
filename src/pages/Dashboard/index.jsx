@@ -6,8 +6,8 @@ import { useDashboard } from '../../hooks/useDashboard';
 
 function Dashboard() {
   const {
-    dashboardYear, setDashboardYear, yearLabels,
-    getYearSummary, yearlySummary, totalGraphData, records, CATEGORIES
+    dashboardYear, setDashboardYear, totalGraphData, yearLabels, getYearSummary,
+    monthlySummary,
   } = useDashboard();
 
   return (
@@ -37,23 +37,23 @@ function Dashboard() {
         <table style={{ width: '100%', color: '#fff', borderCollapse: 'collapse', fontSize: '1em', overflowX: 'auto' }}>
           <thead>
             <tr style={{ borderBottom: '1px solid #444' }}>
-              <th style={{ padding: '0.5em' }}>연도</th>
-              <th style={{ padding: '0.5em', color: '#3ad29f' }}>수입</th>
-              <th style={{ padding: '0.5em', color: '#5b5fc7' }}>지출</th>
-              <th style={{ padding: '0.5em' }}>합계</th>
+              <th style={{ flex : 1,  padding: '0.5em' }}>월별</th>
+              <th style={{ flex : 1,  padding: '0.5em', color: '#3ad29f' }}>수입</th>
+              <th style={{ flex : 1,  padding: '0.5em', color: '#5b5fc7' }}>지출</th>
+              <th style={{ flex : 1,  padding: '0.5em' }}>합계</th>
             </tr>
           </thead>
           <tbody>
-            {yearlySummary.map(row => (
+            {monthlySummary.map(row => (
               <tr key={row.year} style={{ borderBottom: '1px solid #333' }}>
-                <td style={{ padding: '0.5em', textAlign: 'center' }}>{row.year}</td>
-                <td style={{ padding: '0.5em', textAlign: 'right', color: '#3ad29f' }}>
+                <td style={{ flex : 1, padding: '0.5em', textAlign: 'center' }}>{row.month + '월'}</td>
+                <td style={{  flex : 1, padding: '0.5em', textAlign: 'center', color: '#3ad29f' }}>
                   {row.income.toLocaleString()}원
                 </td>
-                <td style={{ padding: '0.5em', textAlign: 'right', color: '#5b5fc7' }}>
+                <td style={{  flex : 1, padding: '0.5em', textAlign: 'center', color: '#5b5fc7' }}>
                   {row.expense.toLocaleString()}원
                 </td>
-                <td style={{ padding: '0.5em', textAlign: 'right', fontWeight: 600 }}>
+                <td style={{  flex : 1, padding: '0.5em', textAlign: 'center', fontWeight: 600 }}>
                   {row.net.toLocaleString()}원
                 </td>
               </tr>
@@ -62,14 +62,6 @@ function Dashboard() {
         </table>
       </div>
       <YearlyGraph data={totalGraphData} />
-      <DashboardTable
-        records={records.filter(r =>
-          r.date &&
-          new Date(r.date).getFullYear() === dashboardYear &&
-          new Date(r.date).getMonth() + 1 === new Date().getMonth() + 1
-        )}
-        CATEGORIES={CATEGORIES}
-      />
       <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1.5em' }}>
         <S.Button as="a" href="/table">+ 수입/지출 내역 추가하기</S.Button>
       </div>

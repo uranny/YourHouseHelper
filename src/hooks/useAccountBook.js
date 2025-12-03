@@ -7,6 +7,7 @@ export function useAccountBook() {
     const yearRange = Array.from({ length: 26 }, (_, i) => now.getFullYear() - 25 + i);
     const monthRange = Array.from({ length: 12 }, (_, i) => i + 1);
     const [dashboardYear, setDashboardYear] = useState(now.getFullYear());
+    const [dashboardMonth, setDashboardMonth] = useState(now.getMonth() + 1);
     const [tab, setTab] = useState('dashboard');
     const [graphView, setGraphView] = useState('year');
     const getLocalRecords = () => {
@@ -31,6 +32,7 @@ export function useAccountBook() {
         selectedYear, setSelectedYear, selectedMonth, setSelectedMonth,
         yearRange, monthRange,
         dashboardYear, setDashboardYear,
+        dashboardMonth, setDashboardMonth,
         records, setRecords,
         graphView, setGraphView,
     };
