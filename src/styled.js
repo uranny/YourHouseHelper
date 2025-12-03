@@ -311,35 +311,30 @@ export const DashboardYearSelectBar = styled.div`
   }
 `;
 export const HeaderBar = styled.header`
-  width: 100%;
-  background: #1a1d2e;
+  background:rgb(29, 32, 50);
   color: #e3e6f3;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   box-shadow: 2px 0 16px 0 #181c2a44;
-  padding: 0 0 2em 0;
+  padding: 1em 1em 1em 1em;
 `;
 export const HeaderLogo = styled.div`
   font-size: 1.25em;
   font-weight: 700;
   color: #fff;
-  padding: 2.2em 1.5em 1.2em 1.5em;
   letter-spacing: 0.03em;
-  background: #181c2a;
   text-align: left;
 `;
 export const HeaderMenu = styled.ul`
   list-style: none;
+  gap : 2em;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 0;
-  padding: 0;
 `;
 export const HeaderItem = styled.li`
-  margin: 0 0.5em;
 `;
 export const HeaderLink = styled.a`
   display: flex;
@@ -350,9 +345,9 @@ export const HeaderLink = styled.a`
   color: #e3e6f3;
   border: none;
   outline: none;
+  text-decoration-line : none;
   font-size: 1.08em;
   font-weight: 500;
-  padding: 0.95em 2em;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
   border-bottom: 2px solid transparent;

@@ -1,7 +1,7 @@
 import RecordInput from '../../components/RecordInput';
 import RecordTable from '../../components/RecordTable';
-import * as S from './styled';
 import { useTable } from '../../hooks/useTable';
+import * as S from './styled';
 
 function Table() {
   const {

@@ -31,7 +31,7 @@ export function useAccountBook() {
         selectedYear, setSelectedYear, selectedMonth, setSelectedMonth,
         yearRange, monthRange,
         dashboardYear, setDashboardYear,
-        records,
+        records, setRecords,
         graphView, setGraphView,
     };
 }
