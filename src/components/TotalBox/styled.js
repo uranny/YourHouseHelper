@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// TotalBox 스타일 설정
 export const Total = styled.div`
     display: flex;
     justify-content: center;

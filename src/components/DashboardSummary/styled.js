@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// DashboardSummary 스타일 설정
 export const SummaryBox = styled.div`
   display: flex;
   justify-content: space-around;

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// App.jsx스타일 설정
 export const Wrapper = styled.div`
   min-height: 100vh;
   min-width: 1000px;

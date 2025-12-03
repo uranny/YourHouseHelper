@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// RecordInput 스타일 설정
 export const InputBox = styled.form`
     display: flex;
     width: 100%;
