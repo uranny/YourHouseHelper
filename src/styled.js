@@ -190,9 +190,9 @@ export const Layout = styled.div`
   display: flex;
   height : 100vh;
   background: #181c2a;
+  flex-direction : column;
   @media (max-width: 1000px) {
     width: 100vw;
-    flex-direction : column;
   }
 `;
 export const Sidebar = styled.nav`
@@ -308,5 +308,57 @@ export const DashboardYearSelectBar = styled.div`
   @media (max-width: 600px) {
     gap: 0.5em;
     margin-bottom: 0.7em;
+  }
+`;
+export const HeaderBar = styled.header`
+  width: 100%;
+  background: #1a1d2e;
+  color: #e3e6f3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 2px 0 16px 0 #181c2a44;
+  padding: 0 0 2em 0;
+`;
+export const HeaderLogo = styled.div`
+  font-size: 1.25em;
+  font-weight: 700;
+  color: #fff;
+  padding: 2.2em 1.5em 1.2em 1.5em;
+  letter-spacing: 0.03em;
+  background: #181c2a;
+  text-align: left;
+`;
+export const HeaderMenu = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+`;
+export const HeaderItem = styled.li`
+  margin: 0 0.5em;
+`;
+export const HeaderLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: none;
+  color: #e3e6f3;
+  border: none;
+  outline: none;
+  font-size: 1.08em;
+  font-weight: 500;
+  padding: 0.95em 2em;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  border-bottom: 2px solid transparent;
+  &:hover {
+    background: #23263a;
+    color: #5b5fc7;
+    border-bottom: 2px solid #5b5fc7;
   }
 `;

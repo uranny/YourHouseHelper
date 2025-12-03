@@ -11,7 +11,7 @@ function Dashboard() {
   } = useDashboard();
 
   return (
-    <>
+    <S.DashboardPageWrapper>
       <S.DashboardYearSelectBar>
         <label htmlFor="dashboard-year-select" style={{ color: '#fff', fontWeight: 500 }}>
           연도 선택:
@@ -73,7 +73,7 @@ function Dashboard() {
       <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1.5em' }}>
         <S.Button as="a" href="/table">+ 수입/지출 내역 추가하기</S.Button>
       </div>
-    </>
+    </S.DashboardPageWrapper>
   );
 }
 
