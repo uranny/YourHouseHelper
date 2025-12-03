@@ -279,9 +279,9 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: stretch;
   background: #181c2a;
-  padding: 0 0 2em 0;
+  padding: 80px 0 2em 0;
   @media (max-width: 1000px) {
-    padding: 0 0 1em 0;
+    padding: 80px 0 1em 0;
   }
 `;
 export const MainContent = styled.div`
@@ -311,17 +311,19 @@ export const DashboardYearSelectBar = styled.div`
   }
 `;
 export const HeaderBar = styled.header`
+  position : fixed;
+  width : 100%;
   margin : 0, auto;
   background:rgb(29, 32, 50);
   color: #e3e6f3;
+  padding : 0.5em 0 0.5em 0;
   align-items: center;
   justify-content: space-between;
   box-shadow: 2px 0 16px 0 #181c2a44;
-  padding: 1em 1em 1em 1em;
 `;
 
 export const HeaderWrapper = styled.div`
-  width : '100%';
+  width : 100%;
   display : flex;
   flex-direction : row;
   max-width : 900px;
@@ -334,7 +336,6 @@ export const HeaderLogo = styled.div`
   font-size: 1.25em;
   font-weight: 700;
   color: #fff;
-  letter-spacing: 0.03em;
   text-align: left;
 `;
 export const HeaderMenu = styled.ul`

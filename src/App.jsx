@@ -15,8 +15,8 @@ function App() {
           <S.HeaderMenu>
             <S.HeaderLink as="a" href="/dashboard">대시 보드</S.HeaderLink>
             <S.HeaderLink as="a" href="/table">수입/지출 내역</S.HeaderLink>
-            <S.HeaderLink as="a" href="/total-graph">총합 그래프</S.HeaderLink>
           </S.HeaderMenu>
+          <S.HeaderLink as="a" href="/signin">로그인</S.HeaderLink>
         </S.HeaderWrapper>
       </S.HeaderBar>
       <S.Main>
