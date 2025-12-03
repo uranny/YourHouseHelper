@@ -1,4 +1,3 @@
-import React from 'react';
 import * as S from './styled';
 
 function DashboardSummary({ year = '0000', income = 0, expense = 0, net = 0 }) {

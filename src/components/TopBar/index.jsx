@@ -33,7 +33,7 @@ function TopBar({ selectedYear, selectedMonth, setSelectedYear, setSelectedMonth
                             setSelectedMonth(selectedMonth === 1 ? 12 : selectedMonth - 1);
                         }}
                     >
-                        {"<"}
+                        {'<'}
                     </S.NavButton>
                     <S.NavButton 
                         onClick={() => {
@@ -41,7 +41,7 @@ function TopBar({ selectedYear, selectedMonth, setSelectedYear, setSelectedMonth
                             setSelectedMonth(selectedMonth === 12 ? 1 : selectedMonth + 1);
                         }}
                     >
-                        {">"}
+                        {'>'}
                     </S.NavButton>
                 </div>
             </div>

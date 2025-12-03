@@ -1,9 +1,7 @@
 import * as S from './styled';
 import { Bar } from 'react-chartjs-2';
 
-function GraphBox({
-    title, color, data, graphView, setGraphView, legend = false
-}) {
+function GraphBox({ title, color, data, graphView, setGraphView, legend = false }) {
     return (
         <S.GraphBoxWrapper>
             <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'100%',marginBottom:'0.7em'}}>

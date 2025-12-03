@@ -42,4 +42,4 @@ function DashboardTable({ records, CATEGORIES }) {
   );
 }
 
-export default DashboardTable; 
+export default DashboardTable;

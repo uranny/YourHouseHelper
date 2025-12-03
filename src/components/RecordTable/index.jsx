@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as S from './styled';
-import EditModal from '../EditModal/EditModal';
+import EditModal from '../EditModal/index';
 
 function RecordTable({ filteredRecords, CATEGORIES, onEdit, onDelete }) {
     const [editIndex, setEditIndex] = useState(null);

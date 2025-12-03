@@ -59,4 +59,4 @@ function EditModal({ open, value, onChange, onSave, onCancel }) {
     );
 }
 
-export default EditModal; 
+export default EditModal;
