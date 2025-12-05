@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { userApi } from '../api/user';
+import { QUERY_KEYS } from '../constants/query';
 
 export function useSignin() {
     const [id, setId] = useState('');
@@ -6,20 +9,27 @@ export function useSignin() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
-    // 임시: localStorage에 저장된 회원정보로 로그인
+    const signinMutation = useMutation({
+        mutationKey: [QUERY_KEYS.SIGNIN],
+        mutationFn: ({ username, password }) => userApi.signin({ username, password }),
+        onSuccess: (res) => {
+            const { accessToken, refreshToken } = res.data.data;
+            localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('refreshToken', refreshToken);
+            setError('');
+            window.location.href = '/dashboard';
+        },
+        onError: () => {
+            setError('아이디 또는 비밀번호가 올바르지 않습니다.');
+        },
+    });
+
     const handleSignin = () => {
         setLoading(true);
         setError('');
-        setTimeout(() => {
-        const user = JSON.parse(localStorage.getItem('accountbook-user') || '{}');
-        if (user.id === id && user.pw === pw) {
-            setError('');
-            window.location.href = '/dashboard';
-        } else {
-            setError('아이디 또는 비밀번호가 올바르지 않습니다.');
-        }
-        setLoading(false);
-        }, 600);
+        signinMutation.mutate({ username: id, password: pw }, {
+            onSettled: () => setLoading(false)
+        });
     };
 
     return {

@@ -4,8 +4,6 @@ export function useAccountBook() {
     const now = new Date();
     const [selectedYear, setSelectedYear] = useState(now.getFullYear());
     const [selectedMonth, setSelectedMonth] = useState(now.getMonth() + 1);
-    const yearRange = Array.from({ length: 26 }, (_, i) => now.getFullYear() - 25 + i);
-    const monthRange = Array.from({ length: 12 }, (_, i) => i + 1);
     const [dashboardYear, setDashboardYear] = useState(now.getFullYear());
     const [dashboardMonth, setDashboardMonth] = useState(now.getMonth() + 1);
     const [tab, setTab] = useState('dashboard');
@@ -30,7 +28,6 @@ export function useAccountBook() {
     return {
         NAV_ITEMS, tab, setTab,
         selectedYear, setSelectedYear, selectedMonth, setSelectedMonth,
-        yearRange, monthRange,
         dashboardYear, setDashboardYear,
         dashboardMonth, setDashboardMonth,
         records, setRecords,

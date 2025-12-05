@@ -4,13 +4,13 @@ import EditModal from '../EditModal/index';
 
 function RecordTable({ filteredRecords, CATEGORIES, onEdit, onDelete }) {
     const [editIndex, setEditIndex] = useState(null);
-    const [editData, setEditData] = useState({ category: 'EXPENSE', amount: '', description: '', date: '' });
+    const [editData, setEditData] = useState({ recordType: 'EXPENSE', cost: '', description: '', date: '' });
 
     const sortedRecords = [...filteredRecords].sort((a, b) => {
         if (a.date < b.date) return -1;
         if (a.date > b.date) return 1;
-        if (a.category === b.category) return 0;
-        if (a.category === 'EXPENSE') return -1;
+        if (a.recordType === b.recordType) return 0;
+        if (a.recordType === 'EXPENSE') return -1;
         return 1;
     });
 
@@ -66,9 +66,9 @@ function RecordTable({ filteredRecords, CATEGORIES, onEdit, onDelete }) {
                             sortedRecords.map((r, i) => (
                                 <S.Tr key={i}>
                                     <S.Td>{r.date}</S.Td>
-                                    <S.Td>{CATEGORIES[r.category]}</S.Td>
-                                    <S.Td style={{ color: r.category === 'INCOME' ? '#3ad29f' : '#5b5fc7', fontWeight: 500 }}>
-                                        {Number(r.amount).toLocaleString()}원
+                                    <S.Td>{CATEGORIES[r.recordType]}</S.Td>
+                                    <S.Td style={{ color: r.recordType === 'INCOME' ? '#3ad29f' : '#5b5fc7', fontWeight: 500 }}>
+                                        {Number(r.cost).toLocaleString()}원
                                     </S.Td>
                                     <S.Td>
                                         {r.description}

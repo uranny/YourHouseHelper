@@ -19,8 +19,8 @@ function EditModal({ open, value, onChange, onSave, onCancel }) {
                 <S.Row>
                     <S.Label>구분</S.Label>
                     <S.Select
-                        name="category"
-                        value={value.category}
+                        name="recordType"
+                        value={value.recordType}
                         onChange={onChange}
                     >
                         <option value="INCOME">수입</option>
@@ -31,8 +31,8 @@ function EditModal({ open, value, onChange, onSave, onCancel }) {
                     <S.Label>금액</S.Label>
                     <S.Input
                         type="number"
-                        name="amount"
-                        value={value.amount}
+                        name="cost"
+                        value={value.cost}
                         onChange={onChange}
                     />
                 </S.Row>

@@ -4,20 +4,20 @@ function RecordInput({ newRecord, setNewRecord, handleAddRecord }) {
     return (
         <S.InputBox as="form" onSubmit={e => { e.preventDefault(); handleAddRecord(); }}>
             <S.Select
-                name="type"
-                value={newRecord.category}
-                onChange={e => setNewRecord({ ...newRecord, category: e.target.value })}
+                name="recordType"
+                value={newRecord.recordType}
+                onChange={e => setNewRecord({ ...newRecord, recordType: e.target.value })}
             >
                 <option value="INCOME">수입</option>
                 <option value="EXPENSE">지출</option>
             </S.Select>
             <S.Input
-                name="amount"
+                name="cost"
                 type="number"
                 placeholder="금액"
                 max={9999999999}
-                value={newRecord.amount}
-                onChange={e => setNewRecord({ ...newRecord, amount: e.target.value })}
+                value={newRecord.cost}
+                onChange={e => setNewRecord({ ...newRecord, cost: e.target.value })}
             />
             <S.Input
                 name="description"
